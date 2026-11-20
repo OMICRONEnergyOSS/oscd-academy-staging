@@ -63,6 +63,14 @@ export default [
             src: ["plugins"],
             dest: `${outputDir}`,
           },
+          {
+            src: [
+              "vendor/oscd-editor-map-communication/dist/*.js",
+              "vendor/oscd-editor-map-communication/dist/*.js.map",
+              "vendor/oscd-editor-map-communication/dist/assets",
+            ],
+            dest: `${outputDir}/vendor`,
+          },
           // Add more patterns if you have more assets
         ],
         verbose: true,

@@ -24,7 +24,14 @@ export default [
     "plugin:@typescript-eslint/recommended",
   ),
   {
-    ignores: ["dist/", "dist-electron/", "node_modules", "coverage", "doc"],
+    ignores: [
+      "dist/",
+      "dist-electron/",
+      "node_modules",
+      "coverage",
+      "doc",
+      "vendor/oscd-editor-map-communication/",
+    ],
   },
 
   {

@@ -9,7 +9,7 @@ import OscdMenuImportIed from "@omicronenergy/oscd-menu-import-ied";
 import OscdMenuRemoveIEDs from "@openpowershift/oscd-menu-remove-ieds";
 import OscdMenuValidate from "@omicronenergy/oscd-menu-validate";
 
-// import OscdEditorSld from "@omicronenergy/oscd-editor-sld";
+import OscdEditorSld from "@omicronenergy/oscd-editor-sld";
 import OscdEditorDiff from "@omicronenergy/oscd-editor-diff";
 import OscdEditorSource from "@omicronenergy/oscd-editor-source";
 import OscdEditorCommunication from "@omicronenergy/oscd-editor-communication/oscd-editor-communication.js";
@@ -54,6 +54,25 @@ const importOscdTemplateGenerator = async () => {
   }
 };
 
+export const plugins = [
+  {
+    name: "Open",
+    description: "Open an SCL file",
+    icon: "folder-open",
+    kind: "menu",
+    requiresDoc: false,
+    origin: "BuiltIn",
+    translations: {
+      de: {
+        name: "Öffnen",
+        description: "Öffnen einer SCL Datei",
+      },
+    },
+    CoMPASActive: true,
+    OMICRONgroup: "File",
+  },
+];
+
 export const loadPlugins = async (oscdShell) => {
   const OscdTemplateGenerator = await importOscdTemplateGenerator();
   const registry = oscdShell.registry;
@@ -69,7 +88,7 @@ export const loadPlugins = async (oscdShell) => {
   registry.define("oscd-menu-validate", OscdMenuValidate);
   registry.define("oscd-background-editv1", OscdBackgroundEditV1);
   registry.define("oscd-background-wizard-events", OscdBackgroundWizardEvents);
-  // registry.define("oscd-editor-sld", OscdEditorSld);
+  registry.define("oscd-editor-sld", OscdEditorSld);
   registry.define("oscd-editor-diff", OscdEditorDiff);
   registry.define("oscd-editor-source", OscdEditorSource);
   registry.define("oscd-editor-ied", OscdEditorIED);
@@ -204,8 +223,45 @@ export const loadPlugins = async (oscdShell) => {
           },
         ],
       },
+      {
+        name: "SLD Tools",
+        translations: { de: "SLD-Werkzeuge" },
+        icon: "build",
+        plugins: [
+          {
+            name: "Copy SLDv1 to SLD Private",
+            translations: { de: "SLDv1 nach SLD Private kopieren" },
+            icon: "content_copy",
+            requireDoc: true,
+            src: "https://omicronenergyoss.github.io/oscd-menu-coord-tools/oscd-menu-copy-sldv1-sldpriv.js",
+          },
+          {
+            name: "Copy SLD Private to SLDv1",
+            translations: { de: "SLD Private nach SLDv1 kopieren" },
+            icon: "content_copy",
+            requireDoc: true,
+            src: "https://omicronenergyoss.github.io/oscd-menu-coord-tools/oscd-menu-copy-sldpriv-sldv1.js",
+          },
+          {
+            name: "Clean SLD Coords",
+            translations: { de: "SLD-Koordinaten bereinigen" },
+            icon: "delete_sweep",
+            requireDoc: true,
+            src: "https://omicronenergyoss.github.io/oscd-menu-coord-tools/oscd-menu-sld-coords-cleaner.js",
+          },
+        ],
+      },
     ],
     editor: [
+      // {
+      //   name: "SLD Designer",
+      //   translations: {
+      //     de: "SLD Designer",
+      //   },
+      //   icon: "add_box",
+      //   requireDoc: true,
+      //   src: "./plugins/oscd-editor-sld-temp/oscd-editor-sld.js",
+      // },
       {
         name: "SLD Designer",
         translations: {
@@ -213,17 +269,8 @@ export const loadPlugins = async (oscdShell) => {
         },
         icon: "add_box",
         requireDoc: true,
-        src: "./plugins/oscd-editor-sld-temp/oscd-editor-sld.js",
+        tagName: "oscd-editor-sld",
       },
-      // {
-      //   name: "SLD Designer (new)",
-      //   translations: {
-      //     de: "SLD Designer(new)",
-      //   },
-      //   icon: "add_box",
-      //   requireDoc: true,
-      //   tagName: "oscd-editor-sld",
-      // },
       {
         name: "Substation",
         translations: {
@@ -281,7 +328,7 @@ export const loadPlugins = async (oscdShell) => {
             },
             icon: "edit",
             requireDoc: true,
-            src: "./plugins/scl-bay-template/scl-bay-template.js",
+            src: "./plugins/oscd-bay-template-editor/bay-template-editor.js",
           },
           {
             name: "LNode Mapping",
@@ -370,7 +417,7 @@ export const loadPlugins = async (oscdShell) => {
             },
             icon: "link",
             requireDoc: true,
-            src: "./plugins/scl-communication-editor/scl-communication-editor.js",
+            src: "./vendor/oscd-editor-map-communication/dist/oscd-editor-map-communication.js",
           },
           {
             name: "Explore Communication",

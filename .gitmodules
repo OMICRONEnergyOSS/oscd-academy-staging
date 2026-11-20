@@ -54,3 +54,11 @@
 	path = plugins/compas-official-plugins
 	url = https://github.com/com-pas/oscd-official-plugins.git
 	branch = gh-pages
+[submodule "plugins/oscd-bay-template-editor"]
+	path = plugins/oscd-bay-template-editor
+	url = https://github.com/com-pas/oscd-bay-template-editor.git
+	branch = deploy
+[submodule "vendor/oscd-editor-map-communication"]
+	path = vendor/oscd-editor-map-communication
+	url = https://github.com/OpenPowerShift/oscd-editor-map-communication.git
+	branch = main
