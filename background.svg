@@ -11,21 +11,21 @@
      y="0"
      width="2048"
      height="1165"
-     fill="#1460ac"  />
+     fill="#c8102e"  />
   <polygon
      points="584,716 255,1165 897,1165 2048,675 2048,510 "
-     fill="#0f4c88"
+     fill="#a50d26"
      stroke="none" />
   <polygon
      points="2048,219 2048,0 1409,0 "
-     fill="#0f4c88"
+     fill="#a50d26"
      stroke="none" />
   <polygon
      points="0,1165 255,1165 584,716 0,959 "
-     fill="#0f467e"
+     fill="#8f0b21"
      stroke="none" />
   <polygon
      points="972,0 584,716 2048,510 2048,219 1410,0"
-     fill="#12579b"
+     fill="#b8102a"
      stroke="none" />
 </svg>
