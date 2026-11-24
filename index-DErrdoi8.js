@@ -279440,7 +279440,7 @@ const loadPlugins = async (oscdShell) => {
             },
             icon: "copy_all",
             requireDoc: true,
-            src: "./plugins/process-icd-creator/process-icd-creator.js",
+            src: "https://omicronenergyoss.github.io/oscd-editor-lnode-mapper/oscd-editor-lnode-mapper.js",
           },
         ],
       },
